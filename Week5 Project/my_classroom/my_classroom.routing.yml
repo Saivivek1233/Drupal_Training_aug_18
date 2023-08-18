@@ -1,0 +1,62 @@
+
+my_classroom.myclassroom_form:
+  path: '/my_classroom'
+  defaults:
+    _form: 'Drupal\my_classroom\Form\MyclassroomForm'
+    _title: 'SELECT YOUR CATEGORY'
+  requirements:
+    _permission: 'TRUE'
+
+
+my_classroom.my_classroom_controller_student_listing:
+  path: 'my_classroom/student_listing'
+  defaults:
+    _controller: 'Drupal\my_classroom\Controller\MyclassroomControllerStudent::Listing'
+    _title: 'Students List'
+  requirements:
+    _permission: 'access content'
+
+
+my_classroom.my_classroom_controller_subject_listing:
+  path: 'my_classroom/subject_listing'
+  defaults:
+    _controller: 'Drupal\my_classroom\Controller\MyclassroomControllerSubject::Listing'
+    _title: 'Subjects List'
+  requirements:
+    _permission: 'access content'
+
+
+my_classroom.myclassroom_student_form:
+  path: 'my_classroom/student_form/data'
+  defaults:
+    _form: 'Drupal\my_classroom\Form\MyclassroomStudentForm'
+    _title: 'ADD / EDIT Student Form'
+  requirements:
+    _permission: 'TRUE'
+
+
+my_classroom.myclassroom_subject_form:
+  path: 'my_classroom/subject_form/data'
+  defaults:
+    _form: 'Drupal\my_classroom\Form\MyclassroomSubjectForm'
+    _title: 'ADD / EDIT Subject Form'
+  requirements:
+    _permission: 'TRUE'
+
+
+my_classroom.delete_student:
+  path: 'my_classroom/Studentform/delete/{cid}'
+  defaults:
+    _form: 'Drupal\my_classroom\Form\DeleteStudentForm'
+    _title: 'Delete Student Form'
+  requirements:
+    _permission: 'TRUE'
+
+
+my_classroom.delete_subject:
+  path: 'my_classroom/Subjectform/delete/{cid}'
+  defaults:
+    _form: 'Drupal\my_classroom\Form\DeleteSubjectForm'
+    _title: 'Delete Subject Form'
+  requirements:
+    _permission: 'TRUE'

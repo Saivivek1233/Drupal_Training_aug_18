@@ -1,0 +1,96 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the my_crud module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function my_classroom_install() {
+  \Drupal::messenger()->addStatus(__FUNCTION__);
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function my_classroom_uninstall() {
+  \Drupal::messenger()->addStatus(__FUNCTION__);
+}
+
+/**
+ * Implements hook_schema().
+ */
+function my_classroom_schema() {
+  $schema['student_table'] = [
+    'description' => 'Students Table description.',
+    'fields' => [
+      'sid' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => 'Primary Key: Unique record ID.',
+      ],
+      'stu_name' => [
+        'type' => 'varchar',
+        'length' => '50',
+        'not null' => TRUE,
+        'description' => 'Name of the candidate',
+      ],
+      'sub_id' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'Subject Id',
+        'foreign keys' => [
+                [
+                    'table' => 'subject_table', 
+                    'columns' => ['sub_id' => 'sub_id'], 
+                ],
+      ],
+      ],
+      'email' => [
+        'type' => 'varchar',
+        'length' => '50',
+        'not null' => TRUE,
+        'description' => 'Email of the candidate',
+      ],
+      'phone' => [
+        'type' => 'varchar',
+        'length' => '10',
+        'not null' => TRUE,
+        'description' => 'Subject Id',
+      ],
+    ],
+    'primary key' => ['sid'],
+    ];
+
+    $schema['subject_table'] = [
+    'description' => 'Subject Table description.',
+    'fields' => [
+      'sub_id' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'Primary Key: Unique record ID.',
+      ],
+      'sub_name' => [
+        'type' => 'varchar',
+        'length' => '50',
+        'not null' => TRUE,
+        'description' => 'Name of the candidate',
+      ],
+      'dep_name' => [
+        'type' => 'varchar',
+        'length' => '50',
+        'not null' => TRUE,
+        'description' => 'Department of the candidate',
+      ]
+    ],
+    'primary key' => ['sub_id'],
+    ];
+
+  return $schema;
+}
+
+/**
+ * Implements hook_requirements().
+ */
